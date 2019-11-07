@@ -2,7 +2,7 @@
 import sys, requests, json
 from pathlib import Path
 
-json_folder = Path("/Users/veguinho/Documents/Insper/6_semestre/Cloud/projeto-final/server_adress.json")
+json_folder = Path("server_adress.json")
 with open(json_folder) as json_file:
     data = json.load(json_file)
     adress = data['ip']
