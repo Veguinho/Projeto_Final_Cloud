@@ -48,4 +48,5 @@ class Healthcheck(Resource):
 api.add_resource(Req_noid, '/Tarefa/')
 api.add_resource(Req_withid, '/Tarefa/<int:tarefa_id>')
 api.add_resource(Healthcheck, '/healthcheck/')
-app.run(host="0.0.0.0",debug=True)
+if __name__ == '__main__':
+    app.run(host="0.0.0.0",debug=True)
