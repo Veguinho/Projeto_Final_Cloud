@@ -1,4 +1,5 @@
 #!/bin/bash
+cd /
 sudo apt update
 sudo apt install snapd -y
 sudo apt install python3-pip -y
@@ -12,7 +13,4 @@ sudo apt-get install -y mongodb-org
 sudo mkdir -p /data/db
 sudo chmod 744 /data/db
 sudo mongod --port 27017 --dbpath /data/db & disown
-sudo mongo --port 27017
-use tarefa
-db.createUser({user: "veguinho", pwd: "vegs1234", roles: [{role: "readWrite", db: "tarefa"}]})
-db.tarefas.insert({ "nome": "Tarefa 0","dificuldade": 0 })
+pip3 install pymongo
