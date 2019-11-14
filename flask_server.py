@@ -1,8 +1,18 @@
 from flask import Flask
 from flask_restful import Api, Resource, reqparse
+import os, pymongo
 
 app = Flask(__name__)
 api = Api(app)
+
+mongodb_host = os.getenv('MONGODB_HOST', None)
+
+myclient = pymongo.MongoClient("mongodb://{}:27017/".format(str(mongodb_host)))
+
+mydb = myclient["tarefa"]
+
+mycol = mydb["tarefas"]
+
 
 class Tarefa():
     def __init__(self, nome, dificuldade):
