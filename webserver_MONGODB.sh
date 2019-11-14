@@ -10,9 +10,9 @@ sudo echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/m
 sudo apt-get update
 sudo apt-get install -y mongodb-org
 sudo mkdir -p /data/db
-sudo chown $USER /data/db
-mongod --port 27017 --dbpath /data/db & disown
-mongo --port 27017
+sudo chmod 744 /data/db
+sudo mongod --port 27017 --dbpath /data/db & disown
+sudo mongo --port 27017
 use tarefa
 db.createUser({user: "veguinho", pwd: "vegs1234", roles: [{role: "readWrite", db: "tarefa"}]})
-db.tarefas.insert(0:{ "nome": "Tarefa 0","dificuldade": 0 })
+db.tarefas.insert({ "nome": "Tarefa 0","dificuldade": 0 })
