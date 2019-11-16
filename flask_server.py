@@ -32,9 +32,12 @@ class Req_noid(Resource):
         return tarefas_dic
 
     def post(self):
-        index = len(tarefas_dic)
-        tarefas_dic[index] = {"nome":"Tarefa {}".format(index), "dificuldade":0}
-        return tarefas_dic[index], 201
+        collection = myclient['chain']
+        index = len(collection.find({}))
+        # tarefas_dic[index] = {"nome":"Tarefa {}".format(index), "dificuldade":0}
+        mydict = { "nome": "Tarefa {}".format(index), "dificuldade": 0 }
+        mycol.insert_one(mydict)
+        return mycol[index], 201
 
 class Req_withid(Resource):
     def get(self, tarefa_id):
