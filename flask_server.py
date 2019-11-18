@@ -1,6 +1,9 @@
 from flask import Flask
 from flask_restful import Api, Resource, reqparse
-import os, pymongo
+import os, pymongo, json
+
+from bson import Binary, Code
+from bson.json_util import dumps, RELAXED_JSON_OPTIONS
 
 app = Flask(__name__)
 api = Api(app)
@@ -13,6 +16,7 @@ mydb = myclient["tarefa"]
 
 mycol = mydb["tarefas"]
 
+index = 0
 
 class Tarefa():
     def __init__(self, nome, dificuldade):
@@ -28,17 +32,21 @@ parser.add_argument('tarefa')
 
 class Req_noid(Resource):
     def get(self):
+        data = {}
+        data['lista'] = []
         cursor = mycol.find({})
         for document in cursor:
             print(document)
-        return cursor
+            data['lista'].append(str(document))
+        json_data = json.dumps(data)
+        return json_data, 200
 
     def post(self):
-        index = len(mycol.find({}))
+        index = 1
         # tarefas_dic[index] = {"nome":"Tarefa {}".format(index), "dificuldade":0}
-        mydict = { "nome": "Tarefa {}".format(index), "dificuldade": 0 }
+        mydict = { "nome": "Tarefa {}".format(str(index)), "dificuldade": 0 }
         mycol.insert_one(mydict)
-        return mycol[index], 201
+        return str(mycol[index]), 201
 
 class Req_withid(Resource):
     def get(self, tarefa_id):
