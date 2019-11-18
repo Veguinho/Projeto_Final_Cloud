@@ -12,4 +12,3 @@ sudo apt-get update
 sudo apt-get install -y mongodb-org
 sudo mkdir -p /data/db
 sudo chmod 744 /data/db
-
