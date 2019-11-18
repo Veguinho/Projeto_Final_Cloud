@@ -19,7 +19,6 @@ class Tarefa():
         self.nome = nome
         self.dificuldade = dificuldade
 
-
 tarefa0 = Tarefa("Tarefa 0", 0)
 
 tarefas_dic = {0:{"nome":tarefa0.nome, "dificuldade":tarefa0.dificuldade}}
@@ -29,7 +28,10 @@ parser.add_argument('tarefa')
 
 class Req_noid(Resource):
     def get(self):
-        return tarefas_dic
+        cursor = mycol.find({})
+        for document in cursor:
+            print(document)
+        return cursor
 
     def post(self):
         collection = myclient['chain']
