@@ -34,8 +34,7 @@ class Req_noid(Resource):
         return cursor
 
     def post(self):
-        collection = myclient['chain']
-        index = len(collection.find({}))
+        index = len(mycol.find({}))
         # tarefas_dic[index] = {"nome":"Tarefa {}".format(index), "dificuldade":0}
         mydict = { "nome": "Tarefa {}".format(index), "dificuldade": 0 }
         mycol.insert_one(mydict)
