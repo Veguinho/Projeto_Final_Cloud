@@ -10,13 +10,11 @@ api = Api(app)
 
 mongodb_host = os.getenv('MONGODB_HOST', None)
 
-myclient = pymongo.MongoClient("mongodb://{}:27017/".format(str(mongodb_host)))
+myclient = pymongo.MongoClient("mongodb://{}:27017/".format(mongodb_host))
 
 mydb = myclient["tarefa"]
 
 mycol = mydb["tarefas"]
-
-index = 0
 
 class Tarefa():
     def __init__(self, nome, dificuldade):
