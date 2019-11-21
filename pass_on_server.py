@@ -10,7 +10,7 @@ api = Api(app)
 
 pass_to_host = os.getenv('PASS_TO_HOST', None)
 
-adress = pymongo.MongoClient("{}:5000/".format(str(pass_to_host)))
+adress = "{}:5000/".format(str(pass_to_host))
 
 class Req_noid(Resource):
     def get(self):
