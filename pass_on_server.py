@@ -10,20 +10,20 @@ api = Api(app)
 
 pass_to_host = os.getenv('PASS_TO_HOST', None)
 
-adress = "{}:5000/".format(str(pass_to_host))
+adress = "http://{}:5000".format(str(pass_to_host))
 
 class Req_noid(Resource):
     def get(self):
         r = requests.get(adress + '/Tarefa/')
         print("Status " + str(r.status_code))
         print(r.json())
-        return r, 200
+        return r.json(), 200
 
     def post(self):
         r = requests.post(adress + '/Tarefa/')
         print("Status " + str(r.status_code))
         print(r.json())
-        return r, 201
+        return r.json(), 201
 
 # class Req_withid(Resource):
 #     def get(self, tarefa_id):
