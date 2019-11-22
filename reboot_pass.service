@@ -1,0 +1,13 @@
+[Unit]
+Description=Pass On Server
+After=network.target
+
+
+[Service]
+User=ubuntu
+ExecStart=/usr/bin/python3 /Projeto_Final_Rafael/pass_on_server.py
+Restart=always
+
+
+[Install]
+WantedBy=multi-user.target
