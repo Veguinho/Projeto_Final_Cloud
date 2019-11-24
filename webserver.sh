@@ -11,7 +11,7 @@ sudo su
 export LC_ALL=C.UTF-8
 export LANG=C.UTF-8
 export FLASK_APP=flask_server.py
-cp reboot.service /etc/systemd/system
+cp /Projeto_Final_Cloud/reboot.service /etc/systemd/system
 chmod 664 /etc/systemd/system/reboot.service
 systemctl daemon-reload
 systemctl start reboot.service
