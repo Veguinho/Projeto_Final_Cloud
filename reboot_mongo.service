@@ -1,0 +1,9 @@
+[Unit]
+Description=Mongo Server
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/sudo mongod --port 27017 --bind_ip_all --dbpath /data/db
+
+[Install]
+WantedBy=multi-user.target
