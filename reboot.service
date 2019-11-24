@@ -2,12 +2,8 @@
 Description=Main Server
 After=network.target
 
-
 [Service]
-User=ubuntu
-ExecStart=/usr/bin/python3 /Projeto_Final_Rafael/flask_server.py
-Restart=always
-
+ExecStart=/usr/bin/python3 /Projeto_Final_Cloud/flask_server.py
 
 [Install]
 WantedBy=multi-user.target

@@ -8,9 +8,13 @@ from bson.json_util import dumps, RELAXED_JSON_OPTIONS
 app = Flask(__name__)
 api = Api(app)
 
-pass_to_host = os.getenv('PASS_TO_HOST', None)
+#pass_to_host = os.getenv('PASS_TO_HOST', None)
 
-adress = "http://{}:5000".format(str(pass_to_host))
+file = open('/Projeto_Final_Cloud/address')
+address_from_file = file.read()
+adress = "http://{}:5000".format(address_from_file.strip())
+
+#adress = "http://{}:5000".format(str(pass_to_host))
 
 class Req_noid(Resource):
     def get(self):

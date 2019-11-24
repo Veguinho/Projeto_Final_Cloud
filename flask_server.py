@@ -10,7 +10,11 @@ api = Api(app)
 
 mongodb_host = os.getenv('MONGODB_HOST', None)
 
-myclient = pymongo.MongoClient("mongodb://{}:27017/".format(str(mongodb_host)))
+file = open('/Projeto_Final_Cloud/address')
+address_from_file = file.read()
+#adress = "http://{}:5000".format(address_from_file.strip())
+
+myclient = pymongo.MongoClient("mongodb://{}:27017/".format(address_from_file.strip()))
 
 mydb = myclient["tarefa"]
 
