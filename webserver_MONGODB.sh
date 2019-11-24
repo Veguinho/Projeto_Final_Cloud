@@ -12,6 +12,7 @@ sudo apt-get update
 sudo apt-get install -y mongodb-org
 sudo mkdir -p /data/db
 sudo chmod 744 /data/db
+sudo su
 cp /Projeto_Final_Cloud/reboot_mongo.service /etc/systemd/system
 chmod 664 /etc/systemd/system/reboot_mongo.service
 systemctl daemon-reload
