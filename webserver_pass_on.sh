@@ -11,4 +11,8 @@ sudo su
 export LC_ALL=C.UTF-8
 export LANG=C.UTF-8
 export FLASK_APP=pass_on_server.py
-flask run --host=0.0.0.0
+cp /Projeto_Final_Cloud/reboot_pass.service /etc/systemd/system
+chmod 664 /etc/systemd/system/reboot_pass.service
+systemctl daemon-reload
+systemctl start reboot_pass.service
+systemctl enable reboot_pass.service

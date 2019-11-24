@@ -11,4 +11,8 @@ sudo su
 export LC_ALL=C.UTF-8
 export LANG=C.UTF-8
 export FLASK_APP=flask_server.py
-flask run --host=0.0.0.0
+cp reboot.service /etc/systemd/system
+chmod 664 /etc/systemd/system/reboot.service
+systemctl daemon-reload
+systemctl start reboot.service
+systemctl enable reboot.service
